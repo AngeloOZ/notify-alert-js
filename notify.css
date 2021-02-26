@@ -1,6 +1,9 @@
+.contenedor-notify{
+    position: fixed;
+
+}
 .notify{
     background-color: #000000;
-    position: fixed;
     display: flex;
     width: 320px;
     min-height: 70px;
@@ -10,6 +13,7 @@
     z-index: 999999;
     opacity: 0.8;
     color: #fff;
+    margin-bottom: 10px;
     /* pointer-events: none; */
 }
 .notify *{
@@ -23,30 +27,30 @@
     box-shadow: 0 0 12px #000;
 }
 /* Posiciones */
-.notify.top-right{
+.contenedor-notify.top-right{
     top: 10px;
     right: 10px
 }
-.notify.bottom-right{
+.contenedor-notify.bottom-right{
     bottom: 10px;
     right: 10px
 }
-.notify.top-left{
+.contenedor-notify.top-left{
     top: 10px;
     left: 10px
 }
-.notify.bottom-left{
+.contenedor-notify.bottom-left{
     bottom: 10px;
     left: 10px
 }
-.notify.top-full-width{
+.contenedor-notify.top-full-width{
     width: 95%;
     top: 5px;
     left: 0;
     right: 0;
     margin: auto;
 }
-.notify.bottom-full-width{
+.contenedor-notify.bottom-full-width{
     width: 95%;
     bottom: 10px;
     left: 0;
@@ -62,7 +66,7 @@
     background-color: #51A351;
 }
 .notify-warning{
-    background-color: #BD362F
+    background-color: #F89406
 }
 .notify-error{
     background-color: #BD362F
