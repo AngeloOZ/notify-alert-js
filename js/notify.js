@@ -4,7 +4,7 @@ class Notify {
         this.message = "";
         this.options = {
             "closeButton": true,
-            // "progressBar": false,
+            "progressBar": false,
             "positionClass": "top-right",
             "preventDuplicates": false,
             "escapeHtml": false,
@@ -15,10 +15,6 @@ class Notify {
             "hideDuration": "1000",
             "timeOut": "5000",
             "extendedTimeOut": "1000",
-            // "showEasing": "swing",
-            // "hideEasing": "linear",
-            // "showMethod": "fadeIn",
-            // "hideMethod": "fadeOut"
         }
     }
 
@@ -27,7 +23,8 @@ class Notify {
         const $contenedor = getContainerAlert();
         this.applyConfiguration(config, $contenedor)
         const $alerta = crearAlerta(message, title, 'infor', this.options);
-        bottonCloseAdd($alerta, this.options);
+        addBottonClose($alerta, this.options);
+        addProgressBar($alerta,this.options);
         insertAlertContainer($contenedor, $alerta, this.options);
         showAndHideAlert($alerta, this.options);
     }
@@ -35,7 +32,8 @@ class Notify {
         const $contenedor = getContainerAlert();
         this.applyConfiguration(config, $contenedor)
         const $alerta = crearAlerta(message, title, 'warning', this.options);
-        bottonCloseAdd($alerta, this.options);
+        addBottonClose($alerta, this.options);
+        addProgressBar($alerta,this.options);
         insertAlertContainer($contenedor, $alerta, this.options);
         showAndHideAlert($alerta, this.options);
     }
@@ -43,7 +41,8 @@ class Notify {
         const $contenedor = getContainerAlert();
         this.applyConfiguration(config, $contenedor)
         const $alerta = crearAlerta(message, title, 'success', this.options);
-        bottonCloseAdd($alerta, this.options);
+        addBottonClose($alerta, this.options);
+        addProgressBar($alerta,this.options);
         insertAlertContainer($contenedor, $alerta, this.options);
         showAndHideAlert($alerta, this.options);
     }
@@ -51,9 +50,27 @@ class Notify {
         const $contenedor = getContainerAlert();
         this.applyConfiguration(config, $contenedor)
         const $alerta = crearAlerta(message, title, 'error', this.options);
-        bottonCloseAdd($alerta, this.options);
+        addBottonClose($alerta, this.options);
+        addProgressBar($alerta,this.options);
         insertAlertContainer($contenedor, $alerta, this.options);
         showAndHideAlert($alerta, this.options);
+    }
+    clear(){
+        if(document.getElementById('contenedor-notify')){
+            const $contenedor = document.getElementById('contenedor-notify')
+            if($contenedor.hasChildNodes()){
+                const $notifies = document.querySelectorAll('.notify');
+                $notifies.forEach(element => {
+                    element.classList.remove('show');
+                });
+                setTimeout(() => {
+                    while($contenedor.firstElementChild){
+                        $contenedor.removeChild($contenedor.firstElementChild);
+                    }
+                    $contenedor.remove();
+                }, 500);
+            }
+        }
     }
     applyConfiguration(config, $container){
         if(config != null){
@@ -78,7 +95,6 @@ function getContainerAlert(){
         return notify;
     }
 }
-
 function crearAlerta(sms, title, type, options){
     const div = document.createElement('DIV');
     div.classList.add('notify','notify-'+type);
@@ -109,13 +125,43 @@ function crearAlerta(sms, title, type, options){
     }
     return div;
 }
-function bottonCloseAdd($nodo, op){
-    if(op.closeButton){
+function addProgressBar($nodo, options){
+    if(options.progressBar){
+        const $span = document.createElement('SPAN');
+        $span.classList.add('notify_progress-bar');
+        $nodo.appendChild($span);
+    }
+}
+function progressBar($progress,time, options){
+    if(options.progressBar){ 
+        $progress.style.display = "block";
+        $progress.style.width = "100%";
+
+        let interval = 100
+        let intervalFinal = time;
+        const prg = setInterval(() => {
+            intervalFinal-= interval;
+            let width = (intervalFinal * interval)/time;
+            if(width <= 0){
+                $progress.style.width = '0';
+                clearInterval(prg);
+            }else{
+                $progress.style.width = `${width}%`
+            }
+        }, interval);
+        return prg
+    }
+}
+function addBottonClose($nodo, options){
+    if(options.closeButton){
         const $button = document.createElement('BUTTON')
         $button.classList.add('notify_btn-close')
         $button.textContent = 'x';
         $button.addEventListener('click', e =>{
             $nodo.classList.remove('show');
+            if(options.progressBar){
+                $nodo.querySelector('.notify_progress-bar').style.display = "none";
+            }
             clearTimeout(); 
             setTimeout(() => {
                 e.target.parentElement.remove();
@@ -124,35 +170,48 @@ function bottonCloseAdd($nodo, op){
         $nodo.appendChild($button);
     }
 }
-function showAndHideAlert($nodo, op){
+function showAndHideAlert($nodo, options){
     let time;
+    const $nodoProgresBar = $nodo.querySelector('.notify_progress-bar');
+    let intervalProgres = progressBar($nodoProgresBar,options.timeOut, options);
+
     setTimeout(() => {
         $nodo.classList.add('show');
-    }, op.showDuration);
-
+    }, options.showDuration);
     time = setTimeout(() => {
         $nodo.classList.remove('show');
         setTimeout(() => {
             $nodo.remove();
-        }, op.hideDuration);
-    }, op.timeOut);
+        }, options.hideDuration);
+    }, options.timeOut);
 
     $nodo.addEventListener("mouseenter",_ =>{
         clearTimeout(time)
+        if(options.progressBar){
+            clearInterval(intervalProgres);
+            $nodoProgresBar.style.display = "none";
+        }
     })
 
     $nodo.addEventListener("mouseleave", _ =>{
+        intervalProgres = progressBar($nodoProgresBar,options.extendedTimeOut, options);
         time = setTimeout(() => {
             $nodo.classList.remove('show');
             setTimeout(() => {
                 $nodo.remove();
-            }, (op.extendedTimeOut/2));
-        }, op.extendedTimeOut);
+            }, (options.extendedTimeOut/2));
+        }, options.extendedTimeOut);
     })
 }
 function insertAlertContainer($container, $nodo, options){
     if(options.preventDuplicates){
-        if(!$container.hasChildNodes()){
+        if($container.hasChildNodes()){
+            $smsFirt = $container.lastElementChild.querySelector('.notify_content_message');
+            $newNode = $nodo.querySelector('.notify_content_message');
+            if($smsFirt.innerHTML != $newNode.innerHTML){
+                $container.appendChild($nodo);
+            }
+        }else{
             $container.appendChild($nodo);
         }
     }else{

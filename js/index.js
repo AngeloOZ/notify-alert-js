@@ -18,6 +18,11 @@ const notify2 = new Notify();
 btn[4].addEventListener("click", _=>{
     notify2.options.activeCustomIcon = true;
     notify2.options.customIcon = '<i class="fas fa-envelope"></i>';
-    notify2.infor('Ud. tiene 20 e-mail sin leer', 'Email');
+    notify2.infor('Ud. tiene 20 e-mail sin leer', 'Email',{"progressBar": true});
 })
+
+btn[5].addEventListener("click", _=>{
+    notify.clear();
+})
+
 

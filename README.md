@@ -43,6 +43,9 @@ notify.success('Notify está funcionando correctamente', 'Notify');
 // Mostrar una notificación de error con titulo
 notify.error('Upps parece que no cargo la BDD', 'Error Database');
 
+// Limpia todas las notificaciones existentes
+notify.clear();
+
 // Cambiar las configuraciones globales metodo 1
 notify.success('Notify está funcionando correctamente', 'Notify', {'timeOut': 2000});
 
@@ -55,6 +58,11 @@ Se puede activar opcionalmente un botón para cerrar la notificación
 
 ```js
 notify.options.closeButton = true;
+```
+### Progress Bar
+Muestra visualmente el tiempo que estará la notificación activa
+```js
+notify.options.progressBar = true;
 ```
 ### Posicionamiento de la Notificación en la pantalla
 Existen varias opciones de posicionamiento:

@@ -40,13 +40,14 @@
     background-color: #000000;
     display: flex;
     width: 100%;
-    min-height: 50px;
+    min-height: 55px;
     border-radius: 5px;
     cursor: pointer;
     z-index: 999999;
     opacity: 0;
     color: #fff;
     margin-bottom: 5px;
+    padding-bottom: 2px;
     transition: 0.3s ease-in opacity;
     /* pointer-events: none; */
 }
@@ -63,7 +64,16 @@
     opacity: 1;
     box-shadow: 0 0 12px #000;
 }
-
+.notify_progress-bar{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.1s ease-in width;
+}
 /* Estilos */
 .notify-infor{
     background-color: #2F96B4
@@ -107,11 +117,11 @@
     padding: 10px;
     padding-left: 0;
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 15px;
 }
 .notify_content_title{
     font-weight: bold;
-    /* margin-bottom: 5px; */
+    margin-bottom: 4px;
 }
 
 /* boton para cerrar */
