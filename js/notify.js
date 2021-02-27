@@ -20,11 +20,21 @@ class Notify {
     }
 
 
-    infor(message = "No hay mensaje", title = "", options = null) {
-
+    infor(message = "No hay mensaje", title = "", config = null) {
+        const $contenedor = getContainerAlert();
+        this.applyConfiguration(config, $contenedor)
+        const $alerta = crearAlerta(message, title, 'infor', this.options);
+        bottonCloseAdd($alerta, this.options);
+        insertAlertContainer($contenedor, $alerta, this.options);
+        showAndHideAlert($alerta, this.options);
     }
-    warning(message = "No hay mensaje", title = "", options = null) {
- 
+    warning(message = "No hay mensaje", title = "",  config = null) {
+        const $contenedor = getContainerAlert();
+        this.applyConfiguration(config, $contenedor)
+        const $alerta = crearAlerta(message, title, 'warning', this.options);
+        bottonCloseAdd($alerta, this.options);
+        insertAlertContainer($contenedor, $alerta, this.options);
+        showAndHideAlert($alerta, this.options);
     }
     success(message = "No hay mensaje", title = "", config = null) {
         const $contenedor = getContainerAlert();
@@ -34,8 +44,13 @@ class Notify {
         insertAlertContainer($contenedor, $alerta, this.options);
         showAndHideAlert($alerta, this.options);
     }
-    error(message = "No hay mensaje", title = "", options = null) {
-
+    error(message = "No hay mensaje", title = "", config = null) {
+        const $contenedor = getContainerAlert();
+        this.applyConfiguration(config, $contenedor)
+        const $alerta = crearAlerta(message, title, 'error', this.options);
+        bottonCloseAdd($alerta, this.options);
+        insertAlertContainer($contenedor, $alerta, this.options);
+        showAndHideAlert($alerta, this.options);
     }
     applyConfiguration(config, $container){
         if(config != null){
