@@ -88,7 +88,7 @@ notify.options.activeCustomIcon = true;
 notify.options.customIcon = '<i class="fas fa-envelope"></i>';
 
 // Puede personalizar el tamaño del icono
-notify.options.fontSizeIcon = 30
+notify.options.fontSizeIcon = 30;
 
 // Resultado
 notify.infor('Este es un icono personalizado ', 'Todo ok');
@@ -104,7 +104,7 @@ notify.options.timeOut = 6000;
 notify.options.extendedTimeOut = 1000;
 ```
 
-## Authors
+## Autores
 
 **Angello Ordoñez**
 
