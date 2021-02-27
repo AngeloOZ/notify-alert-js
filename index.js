@@ -1,1 +1,0 @@
-notify.success('Se ha registrado el usuario','Todo bien');
