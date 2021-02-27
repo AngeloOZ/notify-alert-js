@@ -8,6 +8,9 @@ class Notify {
             "positionClass": "top-right",
             "preventDuplicates": false,
             "escapeHtml": false,
+            "activeCustomIcon": true,
+            "customIcon": null,
+            "fontSizeIcon": 28,
             "showDuration": "300",
             "hideDuration": "1000",
             "timeOut": "5000",
@@ -75,22 +78,28 @@ function getContainerAlert(){
         return notify;
     }
 }
+
 function crearAlerta(sms, title, type, options){
     const div = document.createElement('DIV');
     div.classList.add('notify','notify-'+type);
     div.innerHTML = `
             <div class="notify_logo">
-                <i class="far fa-check-circle"></i>
             </div>
             <div class="notify_content">
                 <div class="notify_content_title"></div>
                 <div class="notify_content_message"></div>
             </div>
     `;
+    const $icono = div.querySelector('.notify_logo');
     const $titulo = div.querySelector('.notify_content_title');
     const $sms = div.querySelector('.notify_content_message');
 
-
+    if(options.activeCustomIcon && options.customIcon != null){
+        $icono.style.fontSize = `${options.fontSizeIcon}px`
+        $icono.innerHTML = options.customIcon;
+    }else{
+        $icono.classList.add(type)
+    }
     if(options.escapeHtml){
         $titulo.textContent = title;
         $sms.textContent = sms;
@@ -150,8 +159,3 @@ function insertAlertContainer($container, $nodo, options){
         $container.appendChild($nodo);
     }
 }
-
-
-
-
-const notify = new Notify();
