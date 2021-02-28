@@ -3,7 +3,7 @@ const notify = new Notify();
 notify.options.timeOut = 50000;
 
 btn[0].addEventListener("click", _=>{
-    notify.infor('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+    notify.infor('Notify está esjecutandose correctamente');
 })
 btn[1].addEventListener("click", _=>{
     notify.success('Se registro el usuario correctamente', 'Registro Exitoso');
