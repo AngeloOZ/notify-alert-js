@@ -1,8 +1,9 @@
 const btn = document.querySelectorAll('button')
 const notify = new Notify();
+notify.options.timeOut = 50000;
 
 btn[0].addEventListener("click", _=>{
-    notify.infor('Notify está trabajando correctamente');
+    notify.infor('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
 })
 btn[1].addEventListener("click", _=>{
     notify.success('Se registro el usuario correctamente', 'Registro Exitoso');

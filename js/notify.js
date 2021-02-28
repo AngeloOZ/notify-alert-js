@@ -98,14 +98,7 @@ function getContainerAlert(){
 function crearAlerta(sms, title, type, options){
     const div = document.createElement('DIV');
     div.classList.add('notify','notify-'+type);
-    div.innerHTML = `
-            <div class="notify_logo">
-            </div>
-            <div class="notify_content">
-                <div class="notify_content_title"></div>
-                <div class="notify_content_message"></div>
-            </div>
-    `;
+    div.innerHTML = `<div class="notify_logo"></div><div class="notify_content"><div class="notify_content_title"></div><div class="notify_content_message"></div></div>`;
     const $icono = div.querySelector('.notify_logo');
     const $titulo = div.querySelector('.notify_content_title');
     const $sms = div.querySelector('.notify_content_message');
