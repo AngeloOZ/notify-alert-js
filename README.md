@@ -14,7 +14,7 @@
 - [https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/js/notify.min.js](https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/js/notify.min.js)
 
 #### Github
-```
+```bash
 git clone https://github.com/AngeloOZ/notify-alert-js.git
 ```
 ## Inicio Rápido
