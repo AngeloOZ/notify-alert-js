@@ -10,8 +10,8 @@
 ## Instalación
 ### CDN
 #### Minificado
-- [https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/css/notify.min.css](https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/css/notify.min.css)
-- [https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/js/notify.min.js](https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/js/notify.min.js)
+- [https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/css/v1.0.notify.min.css](https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/css/v1.0.notify.min.css)
+- [https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/js/v.1.0.notify.min.js](https://cdn.jsdelivr.net/gh/AngeloOZ/notify-alert-js@main/js/v.1.0.notify.min.js)
 
 #### Github
 ```bash
