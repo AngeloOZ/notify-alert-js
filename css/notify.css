@@ -59,7 +59,7 @@
     opacity: 0.8;
     transition: 0.3s ease-in opacity;
 }
-.notify:hover{
+.notify.show:hover{
     opacity: 1;
     box-shadow: 0 0 12px #000;
 }
@@ -91,7 +91,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
+    width: 60px;
     padding: 5px;
     font-size: 28px;
     background-repeat: no-repeat;
@@ -114,7 +114,7 @@
 }
 /* Estilos contenidos */
 .notify_content{
-    width: calc(100% - 50px);
+    width: calc(100% - 60px);
     padding: 15px;
     padding-left: 0;
     font-family: sans-serif;

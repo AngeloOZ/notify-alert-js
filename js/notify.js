@@ -151,6 +151,7 @@ function addBottonClose($nodo, options){
         $button.classList.add('notify_btn-close')
         $button.textContent = 'x';
         $button.addEventListener('click', e =>{
+            console.log('click');
             $nodo.classList.remove('show');
             if(options.progressBar){
                 $nodo.querySelector('.notify_progress-bar').style.display = "none";
@@ -158,7 +159,7 @@ function addBottonClose($nodo, options){
             clearTimeout(); 
             setTimeout(() => {
                 e.target.parentElement.remove();
-            }, 400);
+            }, 300);
         })
         $nodo.appendChild($button);
     }
